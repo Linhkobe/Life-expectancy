@@ -1,0 +1,381 @@
+---
+title: "Tuan Linh Dao"
+output: html_notebook
+---
+####
+# Project 2: Data visualization with life expectancy 
+####
+# A. Load library :
+####
+### To install a package from R, type the command install.packages("name of the package") or click "Packages" then "Install", type the name of package that we want to install. 
+####
+```{r}
+library(ggplot2)
+library(gganimate)
+library(dplyr)
+library(ggthemes)
+library(RColorBrewer)
+```
+
+####
+# B. Import dataset :
+####
+```{r}
+data <- read.csv(file.choose(), header = T)
+data
+```
+
+####
+# C. Line chart with ggplot :
+####
+```{r}
+data %>%
+  ggplot(aes(y=Life.expectancy,x=Year, col=Entity)) + 
+  geom_line() +
+  labs(title = "Life expectancy every 50 years of 9 countries",
+       y = "Life expectancy",
+       x = "Year",
+       color = "Country") +
+  theme_fivethirtyeight()
+```
+####
+# D. Countries :
+####
+## 1) Australia :
+####
+### a) Dataframe :
+```{r}
+aus <- data[data$Entity == "Australia", ]
+aus
+```
+####
+### b) Summarize data :
+####
+```{r}
+summary(aus)
+# Average life expectancy of Australia :
+m_aus <- mean(aus$Life.expectancy)
+m_aus
+```
+####
+### c) Plot :
+```{r}
+aus %>%
+  ggplot(aes(y=Life.expectancy,x=Year, col=Entity)) + 
+  geom_line() +
+  labs(title = "Life expectancy of Australia",
+       y = "Life expectancy",
+       x = "Year",
+       color = "Country") 
+```
+
+
+
+####
+## 2) Canada :
+####
+### a) Dataframe :
+```{r}
+can <- data[data$Entity == "Canada", ]
+can
+```
+
+####
+### b) Summarize data :
+```{r}
+summary(can)
+# Average life expectancy of Canada :
+m_can <- mean(can$Life.expectancy)
+m_can
+```
+####
+### c) Plot :
+```{r}
+can %>%
+  ggplot(aes(y=Life.expectancy,x=Year, col=Entity)) + 
+  geom_line() +
+  labs(title = "Life expectancy of Canada",
+       y = "Life expectancy",
+       x = "Year",
+       color = "Country") 
+```
+####
+## 3) France :
+####
+### a) Dataframe :
+```{r}
+fra <- data[data$Entity == "France", ]
+fra
+```
+
+####
+### b) Summarize data :
+```{r}
+summary(fra)
+# Average life expectancy of France :
+m_fra <- mean(fra$Life.expectancy)
+m_fra
+```
+####
+### c) Plot :
+```{r}
+fra %>%
+  ggplot(aes(y=Life.expectancy,x=Year, col=Entity)) + 
+  geom_line() +
+  labs(title = "Life expectancy of France",
+       y = "Life expectancy",
+       x = "Year",
+       color = "Country") 
+```
+
+####
+## 3) Germany :
+####
+### a) Dataframe :
+```{r}
+ger <- data[data$Entity == "Germany", ]
+ger
+```
+
+####
+### b) Summarize data :
+```{r}
+summary(ger)
+# Average life expectancy of Germany :
+m_ger <- mean(ger$Life.expectancy)
+m_ger
+```
+####
+### c) Plot :
+```{r}
+ger %>%
+  ggplot(aes(y=Life.expectancy,x=Year, col=Entity)) + 
+  geom_line() +
+  labs(title = "Life expectancy of Germany",
+       y = "Life expectancy",
+       x = "Year",
+       color = "Country") 
+```
+
+####
+## 5) Italy :
+####
+### a) Dataframe :
+```{r}
+ita <- data[data$Entity == "Italy", ]
+ita
+```
+
+####
+### b) Summarize data :
+```{r}
+summary(ita)
+# Average life expectancy of Italy :
+m_ita <- mean(ita$Life.expectancy)
+m_ita
+```
+####
+### c) Plot :
+```{r}
+ita %>%
+  ggplot(aes(y=Life.expectancy,x=Year, col=Entity)) + 
+  geom_line() +
+  labs(title = "Life expectancy of Italy",
+       y = "Life expectancy",
+       x = "Year",
+       color = "Country") 
+```
+
+####
+## 6) Japan :
+####
+### a) Dataframe :
+```{r}
+jpn <- data[data$Entity == "Japan", ]
+jpn
+```
+
+####
+### b) Summarize data :
+```{r}
+summary(jpn)
+# Average life expectancy of Japan :
+m_jpn <- mean(jpn$Life.expectancy)
+m_jpn
+```
+####
+### c) Plot :
+```{r}
+jpn %>%
+  ggplot(aes(y=Life.expectancy,x=Year, col=Entity)) + 
+  geom_line() +
+  labs(title = "Life expectancy of Japan",
+       y = "Life expectancy",
+       x = "Year",
+       color = "Country") +
+  transition_time(Year)
+```
+
+####
+## 7) Switzerland :
+####
+### a) Dataframe :
+```{r}
+swi <- data[data$Entity == "Switzerland", ]
+swi
+```
+
+####
+### b) Summarize data :
+```{r}
+summary(swi)
+# Average life expectancy of Switzerland :
+m_swi <- mean(swi$Life.expectancy)
+m_swi
+```
+####
+### c) Plot :
+```{r}
+swi %>%
+  ggplot(aes(y=Life.expectancy,x=Year, col=Entity)) + 
+  geom_line() +
+  labs(title = "Life expectancy of Switzerland",
+       y = "Life expectancy",
+       x = "Year",
+       color = "Country") 
+```
+
+####
+## 8) United Kingdom :
+####
+### a) Dataframe :
+```{r}
+uk <- data[data$Entity == "United Kingdom", ]
+uk
+```
+
+####
+### b) Summarize data :
+```{r}
+summary(uk)
+# Average life expectancy of UK :
+m_uk <- mean(uk$Life.expectancy)
+m_uk
+```
+####
+### c) Plot :
+```{r}
+uk %>%
+  ggplot(aes(y=Life.expectancy,x=Year, col=Entity)) + 
+  geom_line() +
+  labs(title = "Life expectancy of United Kingdom",
+       y = "Life expectancy",
+       x = "Year",
+       color = "Country") 
+```
+
+####
+## 9) United States :
+####
+### a) Dataframe :
+```{r}
+usa <- data[data$Entity == "United States", ]
+usa
+```
+
+####
+### b) Summarize data :
+```{r}
+summary(usa)
+# Average life expectancy of USA :
+m_usa <- mean(usa$Life.expectancy)
+m_usa
+```
+####
+### c) Plot :
+```{r}
+usa %>%
+  ggplot(aes(y=Life.expectancy,x=Year, col=Entity)) + 
+  geom_line() +
+  labs(title = "Life expectancy of United States",
+       y = "Life expectancy",
+       x = "Year",
+       color = "Country") 
+```
+
+####
+# E. Summary :
+####
+## a) Dataframe with all countries :
+```{r}
+# Column of countries :
+Country <- c("Australia","Canada","France","Germany","Italy","Japan","Swiss","UK","USA")
+n
+df1 <- rbind(m_aus,m_can,m_fra,m_ger,m_ita,m_jpn,m_swi,m_uk,m_usa)
+df1
+
+```
+####
+```{r}
+df2 <- data.frame(Country,df1)
+df2
+```
+####
+## b) Plot :
+####
+### b.1) Bar plot by defautlt :
+####
+```{r}
+df2 %>%
+  ggplot(aes(Country,df1,fill=Country)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Average life expectency of 9 countries",
+       y="Life expectancy",
+       x="Countries") 
+  # Customize the color of the bar :
+  #+ scale_fill_manual(values = c("Australia" = "salmon",
+                               #"Canada" = "firebrick",
+                               #"France" = "blue",
+                               #"Germany" = "yellow",
+                               #"Italy" = "green",
+                               #"Japan" = "white",
+                               #"Swiss" = "brown",
+                               #"UK" = "red",
+                               #"USA" = "orange"))
+```
+####
+### b.2) Bar plot in ascending order :
+####
+```{r}
+df2 %>%
+  ggplot(aes(reorder(Country,df1),df1,fill=Country)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Average life expectency of 9 countries in ascending order",
+       y="Life expectancy",
+       x="Countries") 
+```
+####
+### b.3) Bar plot in descending order :
+####
+```{r}
+df2 %>%
+  ggplot(aes(reorder(Country,-df1),df1,fill=Country)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Average life expectency of 9 countries in descending order",
+       y="Life expectancy",
+       x="Countries")
+```
+####
+### b.4) We can type geom_col() instead of geom_bar(stat="identity) to reduce the amount of code, they are the same function.
+####
+```{r}
+df2 %>%
+  ggplot(aes(reorder(Country,-df1),df1,fill=Country)) +
+  geom_col() +
+  labs(title = "Average life expectency of 9 countries in descending order",
+       y="Life expectancy",
+       x="Countries")
+```
+
+
+
